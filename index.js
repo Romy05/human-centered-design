@@ -16,6 +16,8 @@ const respondButtons = document.querySelectorAll('.respond-button');
 
 respondButtons.forEach(button => button.addEventListener('click', (e) => respondToAudio(e)));
 
+// Het volgende stuk heb ik laten genereren door AI. Ik ben van plan om hier nog wijzigingen aan te maken.
+
 document.getElementById('trimBtn').addEventListener('click', trimAudio);
 
 async function trimAudio() {

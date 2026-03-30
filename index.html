@@ -1,0 +1,57 @@
+<!DOCTYPE />
+<html lang="nl">
+    <head>
+        <meta charset="UTF-8">
+        <title>HCD</title>
+        <script type="module" src="index.js" defer></script>
+    </head>
+    <body>
+        <p aria-live="polite" id="instructions"></p>
+        <div class="audio-message">
+            <audio controls src="./public/audio/p_9294290_45.mp3"></audio>
+            <button class="respond-button">Reageer</button>
+            <label>
+                Start
+                <input class="start-time" value="0" type="range" aria-describedby="instructions" />
+            </label>
+            <label>
+                Einde
+                <input class="end-time" type="range" aria-describedby="instructions" />
+            </label>
+            
+            
+        </div>
+        
+        <button id="record-button">Record/stop</button>
+
+        <div class="container">
+  <h1>Audio Trimmer</h1>
+  
+  <section>
+    <h3>1. Originele Audio</h3>
+    <audio id="originalAudio" controls crossorigin="anonymous" src="./public/audio/p_9294290_45.mp3"></audio>
+    <p><small>Let op: Werkt alleen als de server van het bestand CORS toestaat.</small></p>
+  </section>
+
+  <section class="controls">
+    <h3>2. Instellingen</h3>
+    <div class="input-group">
+      <label>Start (sec): 
+        <input type="number" id="start" value="1" step="0.1">
+      </label>
+      <label>Eind (sec): 
+        <input type="number" id="end" value="5" step="0.1">
+      </label>
+    </div>
+    <button id="trimBtn">Knip Audio & Maak Nieuw Element</button>
+  </section>
+
+  <section>
+    <h3>3. Resultaat</h3>
+    <div id="resultContainer">
+      <p class="placeholder">Nog geen fragment gemaakt...</p>
+    </div>
+  </section>
+</div>
+    </body>
+</html>

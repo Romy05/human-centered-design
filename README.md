@@ -15,3 +15,13 @@ Ook heb ik met behulp van AI een audio cutter gemaakt. Deze cutter pakt een audi
 <img src="./public/images/Schermafbeelding 2026-03-30 153732.png">
 
 Met het vooronderzoek ben ik 2.5 uur bezig geweest, en met het ontwikkelen van de website ben ik ook 2.5 uur bezig geweest.
+
+## dinsdag 31-3-2026
+
+Het doel van de test is dat de testpersoon een spraakbericht kan afspelen en deze kan trimmen naar hoe hij/zij wilt.
+
+Wat vond je fijn aan de website?
+
+Waren er momenten tijdens de test die je onzeker of verward maakte over de website?
+
+Heb je het gevoel alsof je clues of dingen hebt gemist?

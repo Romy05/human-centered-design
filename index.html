@@ -6,22 +6,21 @@
         <script type="module" src="index.js" defer></script>
     </head>
     <body>
+        <h1>Antwoorden op fragmenten van spraakberichten</h1>
+        <p>Met deze tool kun je audiofragmenten uit spraakberichten halen en op deze fragmenten reageren, probeer het eens uit met het volgende spraakbericht.</p>
         <p aria-live="polite" id="instructions"></p>
         <div class="audio-message">
-            <audio controls src="./public/audio/p_9294290_45.mp3"></audio>
-            <button class="respond-button">Reageer</button>
-            <label>
-                Start
-                <input class="start-time" value="0" type="range" aria-describedby="instructions" />
-            </label>
-            <label>
-                Einde
-                <input class="end-time" type="range" aria-describedby="instructions" />
-            </label>
-            
-            
+            <div id="testAudioContainer1" class="audio-container">
+                <audio aria-live="polite" id="testAudio1" controls src="./public/audio/p_9294290_45.mp3"></audio>
+                <button class="respond-button">Reageer</button>
+            </div> 
         </div>
-        
+        <div class="answer">
+            <div class="audio-example">
+
+            </div>
+        </div>
+        <br><br><br><br><br>
         <button id="record-button">Record/stop</button>
 
         <div class="container">

@@ -1,3 +1,5 @@
+import { createCutter, respondToAudio } from "./audioCutter.js";
+
 const recordButton = document.getElementById('record-button');
 
 const chunks = [];
@@ -41,9 +43,23 @@ function endRecording(mediaRecorder) {
 
 function createAudioElement(blob) {
     const body = document.querySelector('body');
+
     const audio = document.createElement("audio");
     audio.controls = true;
     const audioURL = window.URL.createObjectURL(blob);
     audio.src = audioURL;
-    body.appendChild(audio);
+
+    const respondButton = document.createElement("button");
+    respondButton.innerText = 'Reageer';
+    respondButton.classList.add('respond-button');
+    respondButton.addEventListener('click', (e) => respondToAudio(e))
+
+    const audioContainer = document.createElement("div");
+    audioContainer.classList.add('audio-container');
+    
+    audioContainer.appendChild(audio);
+    audioContainer.appendChild(respondButton);
+    body.appendChild(audioContainer);
+
+    createCutter(audio);
 }

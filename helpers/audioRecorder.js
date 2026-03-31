@@ -1,4 +1,4 @@
-import { createCutter, respondToAudio } from "./audioCutter.js";
+import { respondToAudio } from "./audioCutter.js";
 
 const recordButton = document.getElementById('record-button');
 
@@ -60,6 +60,4 @@ function createAudioElement(blob) {
     audioContainer.appendChild(audio);
     audioContainer.appendChild(respondButton);
     body.appendChild(audioContainer);
-
-    createCutter(audio);
 }

@@ -4,12 +4,22 @@ let timeout = null;
 
 export function respondToAudio(event) {
     const audioElement = event.target.previousElementSibling;
+
+    if (audioElement.readyState >= 1) {
+        createCutter(audioElement);
+    } else {
+        audioElement.addEventListener('loadedmetadata', () => {
+            createCutter(audioElement);
+        });
+    }
+
     const startElement = audioElement.parentElement.parentElement.querySelector('.start-time');
     const endElement = audioElement.parentElement.parentElement.querySelector('.end-time');
     const instructionText = document.getElementById('instructions');
 
-    startElement.focus();
-    instructionText.textContent = "Selecteer de starttijd van het fragment waar u op wilt reageren, door te navigeren door de slider.";
+    startElement.addEventListener('focus', () => {
+        instructionText.textContent = "Selecteer de starttijd van het fragment waar u op wilt reageren, door te navigeren door de slider.";
+    });
     endElement.addEventListener('focus', () => {
         instructionText.textContent = "Selecteer de eindttijd van het fragment, door te navigeren door de slider.";
     });
@@ -18,51 +28,50 @@ export function respondToAudio(event) {
         if (e.keyCode === 13) {
             endElement.focus();
         }
-    } );
+    });
 
-    console.log(audioElement.currentTime);
-
-    // audioElement.play();
-    // audioElement.loop = true;
+    startElement.focus();
 }
 
 export function createCutter(audioElement) {
+    const duration = Math.round(audioElement.duration * 10) / 10;
+    
     const cutterContainer = document.createElement("div");
     cutterContainer.classList.add('cutter');
 
     const startLabel = document.createElement("label");
-    startLabel.innerText = 'Start van het fragment';
+    startLabel.innerText = 'Start';
 
     const startInput = document.createElement("input");
     startInput.classList.add('start-time');
     startInput.setAttribute('type', 'range');
     startInput.setAttribute('aria-describedby', 'instructions');
-    startInput.setAttribute('max', `${audioElement.duration}`);
+    startInput.setAttribute('max', `${duration}`);
     startInput.setAttribute('value', '0');
     startInput.setAttribute('step', '0.1');
 
     startLabel.appendChild(startInput);
 
     const endLabel = document.createElement("label");
-    endLabel.innerText = 'Eind van het fragment';
+    endLabel.innerText = 'Eind';
 
     const endInput = document.createElement("input");
     endInput.classList.add('end-time');
     endInput.setAttribute('type', 'range');
     endInput.setAttribute('aria-describedby', 'instructions');
-    endInput.setAttribute('max', `${audioElement.duration}`);
-    endInput.setAttribute('value', `${audioElement.duration}`);
+    endInput.setAttribute('max', `${duration}`);
+    endInput.setAttribute('value', `${duration}`);
     endInput.setAttribute('step', '0.1');
 
     endLabel.appendChild(endInput);
 
-    
-
     const confirmButton = document.createElement("button");
     confirmButton.innerText = 'Gebruik dit fragment';
+    confirmButton.setAttribute('disabled', "true");
 
     const backButton = document.createElement("button");
     backButton.innerText = 'Annuleren';
+    backButton.setAttribute('disabled', "true");
 
     const buttonList = document.createElement("div");
     buttonList.setAttribute('aria-label', 'Acties voor audiofragment');
@@ -83,11 +92,11 @@ export function createCutter(audioElement) {
 
     endLabel.addEventListener('change', () => {
         cutAudio(startInput.value, endInput.value, audioElement);
+        startInput.setAttribute('max', `${endInput.value}`);
     });
 }
 
 async function cutAudio(start, end, audio) {
-    console.log(start, end);
     const audioCtx = new (window.AudioContext || window.webkitAudioContext);
     const startTime = parseFloat(start);
     const endTime = parseFloat(end);
@@ -108,7 +117,6 @@ async function cutAudio(start, end, audio) {
     const frameCount = endOffset - startOffset;
 
     if (frameCount <= 0) {
-      alert("Eindtijd moet groter zijn dan starttijd!");
       return;
     }
 
@@ -146,5 +154,5 @@ async function cutAudio(start, end, audio) {
 
     timeout = setTimeout(() => {
         newAudio.play();
-    }, 500);
+    }, 1000);
 } 

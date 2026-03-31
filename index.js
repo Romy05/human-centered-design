@@ -1,5 +1,5 @@
 import { initAudioRecorder } from "./helpers/audioRecorder.js";
-import { respondToAudio, createCutter } from "./helpers/audioCutter.js";
+import { respondToAudio } from "./helpers/audioCutter.js";
 
 if (navigator.mediaDevices) {
     const constraints = { audio: true };
@@ -16,17 +16,11 @@ const respondButtons = document.querySelectorAll('.respond-button');
 
 respondButtons.forEach(button => button.addEventListener('click', (e) => respondToAudio(e)));
 
-const audioElement = document.getElementById('testAudio1');
+const playAudioButtons = document.querySelectorAll('.play-button');
 
-if (audioElement.readyState >= 1) {
-  createCutter(audioElement);
-} else {
-  audioElement.addEventListener('loadedmetadata', () => {
-    createCutter(audioElement);
-  });
-}
-
-
+playAudioButtons.forEach(button => button.addEventListener('click', (e) => {
+    e.target.nextElementSibling.play();
+}));
 
 // Het volgende stuk heb ik laten genereren door AI. Ik ben van plan om hier nog wijzigingen aan te maken.
 

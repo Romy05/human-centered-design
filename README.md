@@ -25,3 +25,27 @@ Wat vond je fijn aan de website?
 Waren er momenten tijdens de test die je onzeker of verward maakte over de website?
 
 Heb je het gevoel alsof je clues of dingen hebt gemist?
+
+# Bevindingen tijdens user test
+
+Datum is fijner om helemaal uit te schrijven, anders is het lastig om te visualiseren welke datum het is.
+
+Zorg dat bijzaken zoals datum geen hoofdonderdeel is (denk aan short content platform voorbeeld)
+
+Spraakopname stop/start op dezelfde knop.
+
+Nadat iets gelukt is een geluidje of iets wat aangeeft start of stop.
+
+Maak dingen zo minimalistisch mogelijk. anders zijn het alleen maar extra knoppen waar hij doorheen moet.
+
+Op spatie of enter zodat je hem kan stoppen waarna je gelijk daarop kan reageren.
+
+Misschien handig om vanaf het afspelen van het spraakbericht op 'enter' te kunnen klikken en dat dan als start positie te gebruiken.
+
+Wat als het een spraakmemo van 20min is? Misschien standaard 10 seconden terug draaien als start, waarna de gebruiker nog terug of verder kan navigeren.
+
+4 grote screenreaders nvda gratis gebruiken de meeste mensen
+
+talkback op zijn telefoon, gebruikt vooral laptop telefoon. Ik zou mijn spraakberichten opdracht juist baseren op whatsapp en voorkeur signal.
+
+Gebruikt meer typen dan spraakberichten, met een braille toetsenbord. Zou graag spreekberichten terug willen opzoeken.

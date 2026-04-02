@@ -26,26 +26,39 @@ Waren er momenten tijdens de test die je onzeker of verward maakte over de websi
 
 Heb je het gevoel alsof je clues of dingen hebt gemist?
 
-# Bevindingen tijdens user test
+### Bevindingen tijdens user test
 
-Datum is fijner om helemaal uit te schrijven, anders is het lastig om te visualiseren welke datum het is.
+- Datum is fijner om helemaal uit te schrijven, anders is het lastig om te visualiseren welke datum het is.
 
-Zorg dat bijzaken zoals datum geen hoofdonderdeel is (denk aan short content platform voorbeeld)
+- Zorg dat bijzaken zoals datum geen hoofdonderdeel is (denk aan short content platform voorbeeld)
 
-Spraakopname stop/start op dezelfde knop.
+- Spraakopname stop/start op dezelfde knop.
 
-Nadat iets gelukt is een geluidje of iets wat aangeeft start of stop.
+- Nadat iets gelukt is een geluidje of iets wat aangeeft start of stop.
 
-Maak dingen zo minimalistisch mogelijk. anders zijn het alleen maar extra knoppen waar hij doorheen moet.
+- Maak dingen zo minimalistisch mogelijk. anders zijn het alleen maar extra knoppen waar hij doorheen moet.
 
-Op spatie of enter zodat je hem kan stoppen waarna je gelijk daarop kan reageren.
+- Op spatie of enter zodat je hem kan stoppen waarna je gelijk daarop kan reageren.
 
-Misschien handig om vanaf het afspelen van het spraakbericht op 'enter' te kunnen klikken en dat dan als start positie te gebruiken.
+- Misschien handig om vanaf het afspelen van het spraakbericht op 'enter' te kunnen klikken en dat dan als start positie te gebruiken.
 
-Wat als het een spraakmemo van 20min is? Misschien standaard 10 seconden terug draaien als start, waarna de gebruiker nog terug of verder kan navigeren.
+- Wat als het een spraakmemo van 20min is? Misschien standaard 10 seconden terug draaien als start, waarna de gebruiker nog terug of verder kan navigeren.
 
-4 grote screenreaders nvda gratis gebruiken de meeste mensen
+- 4 grote screenreaders nvda gratis gebruiken de meeste mensen
 
-talkback op zijn telefoon, gebruikt vooral laptop telefoon. Ik zou mijn spraakberichten opdracht juist baseren op whatsapp en voorkeur signal.
+- talkback op zijn telefoon, gebruikt vooral laptop telefoon. Ik zou mijn spraakberichten opdracht juist baseren op whatsapp en voorkeur signal.
 
-Gebruikt meer typen dan spraakberichten, met een braille toetsenbord. Zou graag spreekberichten terug willen opzoeken.
+- Gebruikt meer typen dan spraakberichten, met een braille toetsenbord. Zou graag spreekberichten terug willen opzoeken.
+
+Voor de volgende iteratie wil ik het mogelijk maken om de spraakopname te pauzeren door weer op dezelfde knop te drukken. 
+Ook wil ik een sneltoets maken zodat je vanaf dat punt in kan springen en je eigen spraakmemo kan opnemen als reactie op wat er wordt gezegd in de spraakmemo. 
+
+Ik twijfel nog over de werking, ik wil namelijk:
+
+- Of je scrollt terug naar het begin van het stuk waar je op wilt reageren, NADAT je jouw eigen reactie hebt opgenomen.
+
+- Of je hoeft geen begin te selecteren en je krijgt in het originele spraakbericht een 'ping' sound waarbij je op een sneltoets kan drukken om de reactie te beluisteren.
+
+- Of je krijgt helemaal geen mark van waar je in het spraakbericht reageert, je kunt gewoon de spraakopname pauzeren om een spraakopname op te nemen.
+
+Verder is het wel een MUST dat er een sound cue komt wanneer je begint en eindigt met opnemen.

@@ -1,5 +1,7 @@
-import { initAudioRecorder } from "./helpers/audioRecorder.js";
+import { initAudioRecorder, handleShortCut } from "./helpers/audioRecorder.js";
 import { respondToAudio } from "./helpers/audioCutter.js";
+
+let recorder;
 
 if (navigator.mediaDevices) {
     const constraints = { audio: true };
@@ -7,7 +9,7 @@ if (navigator.mediaDevices) {
     navigator.mediaDevices
         .getUserMedia(constraints)
         .then((stream) => {
-            const recorder = new MediaRecorder(stream);
+            recorder = new MediaRecorder(stream);
             initAudioRecorder(recorder);
         });
 }
@@ -18,13 +20,46 @@ respondButtons.forEach(button => button.addEventListener('click', (e) => respond
 
 const playAudioButtons = document.querySelectorAll('.play-button');
 
+let activeShortcutListener = null;
+
 playAudioButtons.forEach(button => button.addEventListener('click', (e) => {
-    e.target.nextElementSibling.play();
+    const audio = e.target.nextElementSibling;
+
+    audio.addEventListener('pause', () => {
+      if (activeShortcutListener && recorder.state === 'inactive') {
+          document.removeEventListener('keydown', activeShortcutListener);
+          activeShortcutListener = null;
+      }
+    });
+
+    audio.addEventListener('play', () => {
+        if (recorder.state === 'active') {
+            recorder.stop();
+            console.log('recorder stopped');
+        }
+    });
+
+    if (audio.paused) {
+        audio.play();
+        e.target.textContent = 'Pauzeer spraakbericht';
+
+        // Verwijder vorige listener als die er nog is
+        if (activeShortcutListener) {
+            document.removeEventListener('keydown', activeShortcutListener);
+        }
+
+        // Sla de nieuwe listener op en voeg hem toe
+        activeShortcutListener = (event) => handleShortCut(event, recorder, audio);
+        document.addEventListener('keydown', activeShortcutListener);
+    } else {
+        audio.pause();
+        e.target.textContent = 'Speel spraakbericht af';
+    }
 }));
 
 // Het volgende stuk heb ik laten genereren door AI. Ik ben van plan om hier nog wijzigingen aan te maken.
 
-document.getElementById('trimBtn').addEventListener('click', trimAudio);
+// document.getElementById('trimBtn').addEventListener('click', trimAudio);
 
 async function trimAudio() {
   const audioCtx = new (window.AudioContext || window.webkitAudioContext)();

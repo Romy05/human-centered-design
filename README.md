@@ -62,3 +62,10 @@ Ik twijfel nog over de werking, ik wil namelijk:
 - Of je krijgt helemaal geen mark van waar je in het spraakbericht reageert, je kunt gewoon de spraakopname pauzeren om een spraakopname op te nemen.
 
 Verder is het wel een MUST dat er een sound cue komt wanneer je begint en eindigt met opnemen.
+
+## Checkout donderdag 2-4-2026
+Ik denk dat ik voor deze optie ga: 
+
+- Of je hoeft geen begin te selecteren en je krijgt in het originele spraakbericht een 'ping' sound waarbij je op een sneltoets kan drukken om de reactie te beluisteren.
+
+Dat je een mark krijgt die automatisch 10 seconden teruggaat, zodat degene die het weer terugluistert genoeg context krijgt waar het over gaat, maar het niet te lang duurt voordat je de reactie hoort.

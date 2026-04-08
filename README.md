@@ -69,3 +69,21 @@ Ik denk dat ik voor deze optie ga:
 - Of je hoeft geen begin te selecteren en je krijgt in het originele spraakbericht een 'ping' sound waarbij je op een sneltoets kan drukken om de reactie te beluisteren.
 
 Dat je een mark krijgt die automatisch 10 seconden teruggaat, zodat degene die het weer terugluistert genoeg context krijgt waar het over gaat, maar het niet te lang duurt voordat je de reactie hoort.
+
+## Test dinsdag 7-4-2026 
+
+Voor de volgende keer nadenken over de specificity die zijn screenreader gebruikt bij leestekens.
+
+Maak het duidelijker dat er onder een knop is voor de spraakberichten.
+
+Zoek een andere sneltoets, evt alt+shift+d.
+
+Voeg een geluidje toe wanneer er wordt opgenomen.
+
+Ga 10 sec terug in de tijd, dit kan de gebruiker nog aanpassen.
+
+Maak knoppen grooot en in het midden. Zorg ervoor dat knoppen veel contrast hebben.
+
+Maak ook het lettertype groter.
+
+Lichte kleuren gebruiken of randen dikker maken om dingen te arceren.

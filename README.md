@@ -87,3 +87,10 @@ Maak knoppen grooot en in het midden. Zorg ervoor dat knoppen veel contrast hebb
 Maak ook het lettertype groter.
 
 Lichte kleuren gebruiken of randen dikker maken om dingen te arceren.
+
+## Weekly Checkout 10-4-2026
+Kijk naar lettertype wat leesbaar is. UI fonts enzo.
+
+Meer vanuit de ui denken hoe zou dit werken en uitwerken. 
+
+Wat is de reply? Stuur je ze per spraakbericht? Of allemaal tegelijk?

@@ -26,7 +26,7 @@ export function startRecording(recorder, audioElement) {
 }
 
 export function handleShortCut(event, mediaRecorder, audioElement) {
-    if (event.key.toLowerCase() === 's') {
+    if (event.altKey && event.shiftKey && event.key.toLowerCase() === 'd') {
         event.preventDefault();
         if (mediaRecorder.state === 'inactive') {
             audioElement.pause();
@@ -35,6 +35,8 @@ export function handleShortCut(event, mediaRecorder, audioElement) {
         } else {
             mediaRecorder.stop();
             console.log("recorder stopped");
+            const recordEndAudio = new Audio('public/audio/end-recording.mp3');
+            recordEndAudio.play();
             setTimeout(() => audioElement.play(), 1000);
         }
     }

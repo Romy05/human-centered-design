@@ -6,10 +6,7 @@ let chunks = [];
 
 export function initAudioRecorder(recorder) {
 
-    // recordButton.addEventListener('click', () => {
-    //     toggleRecording(recorder);
-    // });
-    const recordStartAudio = new Audio('/public/audio/start-recording.mp3')
+    const recordStartAudio = new Audio('public/audio/start-recording.mp3')
 
     recorder.addEventListener('start', () => {
         chunks = []; 

@@ -94,3 +94,17 @@ Kijk naar lettertype wat leesbaar is. UI fonts enzo.
 Meer vanuit de ui denken hoe zou dit werken en uitwerken. 
 
 Wat is de reply? Stuur je ze per spraakbericht? Of allemaal tegelijk?
+
+## Test Dinsdag 14-4-2026
+
+Borders om verschillende secties heen zetten.
+
+Bij de schakelknop erbij gezet, nu kan hij niet teruglezen. Daarom wel handig om het er onder te zetten.
+
+Deel pagina in met headings, want hij navigeert met headings.
+
+Vormgeving is goed, de knop is heel erg groot dat is goed en groot.
+
+Lettertype hetzelfde en let op de g, alle lijntjes dezelfde dikte. 
+
+Het lukte niet om de spraakopname op te slaan, het was misschien niet duidelijk dat alt+shift+d er voor zorgde dat hij stopte met opnemen. Voeg een keylistener toe die luistert naar spatie en/of enter.

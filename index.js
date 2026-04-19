@@ -23,7 +23,8 @@ const playAudioButtons = document.querySelectorAll('.play-button');
 let activeShortcutListener = null;
 
 playAudioButtons.forEach(button => button.addEventListener('click', (e) => {
-    const audio = e.target.nextElementSibling;
+    const button = e.currentTarget;
+    const audio = button.nextElementSibling;
 
     audio.addEventListener('pause', () => {
       if (activeShortcutListener && recorder.state === 'inactive') {
@@ -41,7 +42,9 @@ playAudioButtons.forEach(button => button.addEventListener('click', (e) => {
 
     if (audio.paused) {
         audio.play();
-        e.target.textContent = 'Pauzeer spraakbericht';
+        button.setAttribute('aria-label', 'Pauzeer spraakbericht');
+        button.querySelector('.icon-pause').style.display = 'block';
+        button.querySelector('.icon-play').style.display = 'none';
 
         // Verwijder vorige listener als die er nog is
         if (activeShortcutListener) {
@@ -53,7 +56,9 @@ playAudioButtons.forEach(button => button.addEventListener('click', (e) => {
         document.addEventListener('keydown', activeShortcutListener);
     } else {
         audio.pause();
-        e.target.textContent = 'Speel spraakbericht af';
+        button.setAttribute('aria-label', 'Speel spraakbericht af');
+        button.querySelector('.icon-pause').style.display = 'none';
+        button.querySelector('.icon-play').style.display = 'block';
     }
 }));
 

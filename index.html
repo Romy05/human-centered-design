@@ -12,7 +12,12 @@
         <p aria-live="polite" id="instructions"></p>
         <div class="audio-message">
             <div id="testAudioContainer1" class="audio-container">
-                <button class="play-button">Speel spraakbericht af</button>
+                <button aria-label="speel spraakbericht af" class="play-button">
+                  <img class="icon icon-pause" src="./public/images/pause-button.png" style="display: none;">
+                  <img class="icon icon-play" src="./public/images/play-button.png">
+                  <div class="audio-visual"></div>
+                </button>
+                
                 <audio aria-live="polite" id="testAudio1" src="https://audio-samples.github.io/samples/mp3/blizzard_tts_unbiased/sample-6/fake-2.mp3"></audio>
                 <!--<button class="respond-button">Reageer</button>-->
             </div> 

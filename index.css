@@ -1,3 +1,13 @@
+html {
+    --main-background-color: #121417;
+    --main-text-color: #fff;
+
+    --secundary-background-color: #1E2228;
+
+    --chat-bubble-color: #3D6BF2;
+    --recieved-chat-bubble-color: #2B2F33;
+}
+
 * {
     margin: 0;
     box-sizing: border-box;
@@ -8,6 +18,8 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    background-color: var(--main-background-color);
+    color: var(--main-text-color);
 }
 
 h1 {
@@ -19,9 +31,29 @@ p {
 }
 
 button {
-    background-color: cyan;
+    display: flex;
+    gap: .5rem;
+    background-color: var(--recieved-chat-bubble-color);
     padding: 2rem;
-    font-size: 6rem;
-    border: .5rem solid black;
+    border: .5rem solid var(--main-text-color);
     cursor: pointer;
+    color: var(--main-text-color);
+
+    &:focus {
+        outline: 1rem solid var(--chat-bubble-color);
+    }
+}
+
+img {
+    height: 2rem;
+}
+
+.audio-visual {
+    width: 4rem;
+    height: 2rem;
+    background: red;
+    mask-image: url('./public/images/voice-message.png');
+    mask-repeat: repeat-x;
+    mask-size: 100%;
+    mask-position: 50%;
 }

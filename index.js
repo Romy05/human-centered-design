@@ -14,15 +14,26 @@ if (navigator.mediaDevices) {
         });
 }
 
+const audioContainers = document.querySelectorAll('.audio-container');
+
+audioContainers.forEach(container => {
+    const audioElement = container.querySelector('audio');
+    const visualElement = container.querySelector('.audio-visual');
+
+    visualElement.setAttribute('style', `--animation-duration: ${audioElement.duration}s`);
+});
+
 const respondButtons = document.querySelectorAll('.respond-button');
 
-respondButtons.forEach(button => button.addEventListener('click', (e) => respondToAudio(e)));
+respondButtons.forEach(button => button.addEventListener('click', respondToAudio));
 
 const playAudioButtons = document.querySelectorAll('.play-button');
 
 let activeShortcutListener = null;
 
-playAudioButtons.forEach(button => button.addEventListener('click', (e) => {
+playAudioButtons.forEach(button => button.addEventListener('click', pressPlayButton));
+
+export function pressPlayButton(e) {
     const button = e.currentTarget;
     const audio = button.nextElementSibling;
 
@@ -30,7 +41,11 @@ playAudioButtons.forEach(button => button.addEventListener('click', (e) => {
       if (activeShortcutListener && recorder.state === 'inactive') {
           document.removeEventListener('keydown', activeShortcutListener);
           activeShortcutListener = null;
-      }
+        }
+        button.setAttribute('aria-label', 'Speel spraakbericht af');
+        button.querySelector('.icon').classList.remove('playing');
+        button.querySelector('.audio-visual').classList.remove('playing');
+        
     });
 
     audio.addEventListener('play', () => {
@@ -38,13 +53,13 @@ playAudioButtons.forEach(button => button.addEventListener('click', (e) => {
             recorder.stop();
             console.log('recorder stopped');
         }
+        button.setAttribute('aria-label', 'Pauzeer spraakbericht');
+        button.querySelector('.icon').classList.add('playing');
+        button.querySelector('.audio-visual').classList.add('playing');
     });
 
     if (audio.paused) {
         audio.play();
-        button.setAttribute('aria-label', 'Pauzeer spraakbericht');
-        button.querySelector('.icon-pause').style.display = 'block';
-        button.querySelector('.icon-play').style.display = 'none';
 
         // Verwijder vorige listener als die er nog is
         if (activeShortcutListener) {
@@ -56,11 +71,8 @@ playAudioButtons.forEach(button => button.addEventListener('click', (e) => {
         document.addEventListener('keydown', activeShortcutListener);
     } else {
         audio.pause();
-        button.setAttribute('aria-label', 'Speel spraakbericht af');
-        button.querySelector('.icon-pause').style.display = 'none';
-        button.querySelector('.icon-play').style.display = 'block';
     }
-}));
+}
 
 // Het volgende stuk heb ik laten genereren door AI. Ik ben van plan om hier nog wijzigingen aan te maken.
 

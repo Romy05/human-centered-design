@@ -10,22 +10,19 @@
         <h1>Antwoorden op fragmenten van spraakberichten</h1>
         <p>Met deze tool kun je audiofragmenten uit spraakberichten halen en tijdens het luisteren reageren door op alt+shift+d te drukken, probeer het eens uit met het volgende spraakbericht. </p>
         <p aria-live="polite" id="instructions"></p>
-        <div class="audio-message">
-            <div id="testAudioContainer1" class="audio-container">
+        <div class="audio-message opposite">
+            <div class="audio-container">
                 <button aria-label="speel spraakbericht af" class="play-button">
-                  <img class="icon icon-pause" src="./public/images/pause-button.png" style="display: none;">
-                  <img class="icon icon-play" src="./public/images/play-button.png">
+                  <div class="icon">
+                    <img class="icon-pause" src="./public/images/pause-button.png">
+                    <img class="icon-play" src="./public/images/play-button.png">
+                  </div>
                   <div class="audio-visual"></div>
                 </button>
                 
-                <audio aria-live="polite" id="testAudio1" src="https://audio-samples.github.io/samples/mp3/blizzard_tts_unbiased/sample-6/fake-2.mp3"></audio>
+                <audio src="https://audio-samples.github.io/samples/mp3/blizzard_tts_unbiased/sample-6/fake-2.mp3"></audio>
                 <!--<button class="respond-button">Reageer</button>-->
             </div> 
-        </div>
-        <div class="answer">
-            <div class="audio-example">
-
-            </div>
         </div>
         <!-- <br><br><br><br><br>
         <button id="record-button">Record/stop</button> -->

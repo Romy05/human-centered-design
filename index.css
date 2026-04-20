@@ -6,6 +6,8 @@ html {
 
     --chat-bubble-color: #3D6BF2;
     --recieved-chat-bubble-color: #2B2F33;
+
+    --focus-color: #00ff00;
 }
 
 * {
@@ -20,40 +22,90 @@ body {
     gap: 2rem;
     background-color: var(--main-background-color);
     color: var(--main-text-color);
+    padding: 1rem;
 }
 
 h1 {
     font-size: 4em;
+    font-family: Arial, Helvetica, sans-serif
 }
 
 p {
-    font-size: 3rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.75rem;
 }
 
 button {
     display: flex;
     gap: .5rem;
-    background-color: var(--recieved-chat-bubble-color);
+    background-color: var(--chat-bubble-color);
     padding: 2rem;
     border: .5rem solid var(--main-text-color);
     cursor: pointer;
     color: var(--main-text-color);
 
     &:focus {
-        outline: 1rem solid var(--chat-bubble-color);
+        outline: 1rem solid var(--focus-color);
     }
 }
 
 img {
-    height: 2rem;
+    height: 4rem;
+}
+
+.audio-message {
+    align-self: flex-end;
+     &.opposite {
+        align-self: flex-start;
+        --chat-bubble-color: var(--recieved-chat-bubble-color);
+    }
+}
+
+.icon {
+    .icon-pause {
+        display: none;
+    }
+
+    .icon-play {
+        display: block;
+    }
+
+    &.playing {
+        .icon-pause {
+            display: block;
+        }
+
+        .icon-play {
+            display: none;
+        }
+    }
 }
 
 .audio-visual {
-    width: 4rem;
-    height: 2rem;
-    background: red;
+    --animation-duration: 0s;
+
+    width: 8rem;
+    height: 4rem;
+    background: linear-gradient(to left,
+    grey 50%, white 0 100%);
+    background-size: 200%;
     mask-image: url('./public/images/voice-message.png');
     mask-repeat: repeat-x;
     mask-size: 100%;
     mask-position: 50%;
+    animation: paused linear --slide var(--animation-duration) infinite;
+
+    &.playing {
+        animation-play-state: running;
+    }
+}
+
+@keyframes --slide {
+    0% {
+        background-position: 100%;
+    }
+
+    100% {
+        background-position: 0%;
+    }
 }

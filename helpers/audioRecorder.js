@@ -1,4 +1,4 @@
-import { respondToAudio } from "./audioCutter.js";
+import { pressPlayButton } from "../index.js";
 
 let chunks = [];
 let originalAudioBlob = null;
@@ -8,6 +8,10 @@ export function initAudioRecorder(recorder) {
     recorder.addEventListener('stop', () => {
         const blob = new Blob(chunks, { type: recorder.mimeType });
         createAudioElement(originalAudioBlob, blob);
+    });
+
+    recorder.addEventListener('pause', () => {
+        chunks = [];
     });
 
     recorder.addEventListener('dataavailable', (e) => {
@@ -26,19 +30,31 @@ export function startRecording(recorder, audioElement) {
 }
 
 export function handleShortCut(event, mediaRecorder, audioElement) {
-    if (event.altKey && event.shiftKey && event.key.toLowerCase() === 'd') {
+    console.log(event);
+    const escapeKeyPressed = event.key === 'Escape';
+    const startKeyPressed = event.altKey && event.shiftKey && event.key.toLowerCase() === 'd';
+    const stopKeyPressed = event.key === ' ' || event.key === 'Enter';
+
+    if (escapeKeyPressed) {
+        mediaRecorder.pause();
+        console.log('recording deleted');
+        const recordQuitAudio = new Audio('public/audio/quit-recording.mp3');
+        recordQuitAudio.play();
+        return;
+    }
+
+    if (mediaRecorder.state === 'inactive' && startKeyPressed) {
         event.preventDefault();
-        if (mediaRecorder.state === 'inactive') {
-            audioElement.pause();
-            startRecording(mediaRecorder, audioElement);
-            console.log("recorder started");
-        } else {
-            mediaRecorder.stop();
-            console.log("recorder stopped");
-            const recordEndAudio = new Audio('public/audio/end-recording.mp3');
-            recordEndAudio.play();
-            setTimeout(() => audioElement.play(), 1000);
-        }
+        audioElement.pause();
+        startRecording(mediaRecorder, audioElement);
+        console.log("recorder started");
+    } else if (mediaRecorder.state === 'recording' && stopKeyPressed) {
+        event.preventDefault();
+        mediaRecorder.stop();
+        console.log("recorder stopped");
+        const recordEndAudio = new Audio('public/audio/end-recording.mp3');
+        recordEndAudio.play();
+        setTimeout(() => audioElement.play(), 1000);
     }
 }
 
@@ -83,21 +99,34 @@ async function createAudioElement(originalBlob, recordedBlob) {
     const layeredBlob = audioBufferToBlob(layeredBuffer);
 
     const audio = document.createElement("audio");
-    audio.controls = true;
     audio.src = window.URL.createObjectURL(layeredBlob);
+    const audioDuration = await new Promise((resolve) => {
+        audio.addEventListener('loadedmetadata', () => resolve(audio.duration));
+    });
 
-    const respondButton = document.createElement("button");
-    respondButton.innerText = 'Reageer';
-    respondButton.classList.add('respond-button');
-    respondButton.addEventListener('click', (e) => respondToAudio(e));
+    const playButton = document.createElement('button');
+    playButton.setAttribute('aria-label', 'speel spraakbericht af');
+    playButton.classList.add('play-button');
+    playButton.innerHTML = `<div class="icon">
+                            <img class="icon-pause" src="./public/images/pause-button.png">
+                            <img class="icon-play" src="./public/images/play-button.png">
+                        </div>
+                        <div class="audio-visual" style="--animation-duration: ${audioDuration}s"></div>`;
+    playButton.addEventListener('click', pressPlayButton)
 
     const audioContainer = document.createElement("div");
     audioContainer.classList.add('audio-container');
 
+    const message = document.createElement('div');
+    message.classList.add('audio-message');
+
+    audioContainer.appendChild(playButton);
     audioContainer.appendChild(audio);
-    audioContainer.appendChild(respondButton);
-    body.appendChild(audioContainer);
+    message.appendChild(audioContainer);
+    body.appendChild(message);
 }
+
+
 
 
 // Dit heb ik met behulp van Claude AI gedaan

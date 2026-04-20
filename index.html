@@ -10,20 +10,39 @@
         <h1>Antwoorden op fragmenten van spraakberichten</h1>
         <p>Met deze tool kun je audiofragmenten uit spraakberichten halen en tijdens het luisteren reageren door op alt+shift+d te drukken, probeer het eens uit met het volgende spraakbericht. </p>
         <p aria-live="polite" id="instructions"></p>
-        <div class="audio-message opposite">
-            <div class="audio-container">
-                <button aria-label="speel spraakbericht af" class="play-button">
-                  <div class="icon">
-                    <img class="icon-pause" src="./public/images/pause-button.png">
-                    <img class="icon-play" src="./public/images/play-button.png">
-                  </div>
-                  <div class="audio-visual"></div>
-                </button>
-                
-                <audio src="https://audio-samples.github.io/samples/mp3/blizzard_tts_unbiased/sample-6/fake-2.mp3"></audio>
-                <!--<button class="respond-button">Reageer</button>-->
-            </div> 
+        <div class="content">
+          <div>
+            <h2>Berichten</h2>
+            <div class="messages">
+              <div class="audio-message opposite">
+                  <div class="audio-container">
+                    <button aria-label="speel spraakbericht af" class="play-button">
+                      <div class="icon">
+                        <img class="icon-pause" src="./public/images/pause-button.png">
+                        <img class="icon-play" src="./public/images/play-button.png">
+                      </div>
+                      <div class="audio-visual"></div>
+                    </button>
+                    
+                    <audio src="./public/audio/p_9294290_45.mp3"></audio>
+
+                    <button class="transcribe">
+                      Transcribeer
+                    </button>
+                    <p class="empty" data-text-content="Hey Berend! Ik hoorde vandaag dat je naar de hogeschool van Amsterdam toe ging om websites van studenten te testen. Hoe lang duurt dat? En hoe laat denk je dat je daar klaar bent?" aria-live="polite"></p>
+                  </div> 
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2>Zoeken</h2>
+            <label>
+              Zoek spraakberichten
+              <input />
+            </label>
+          </div>
         </div>
+        
         <!-- <br><br><br><br><br>
         <button id="record-button">Record/stop</button> -->
 

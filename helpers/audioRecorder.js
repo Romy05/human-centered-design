@@ -1,13 +1,23 @@
-import { pressPlayButton } from "../index.js";
+import { pressPlayButton, pressTranscribeButton } from "../index.js";
 
 let chunks = [];
 let originalAudioBlob = null;
 let pauseTime = null;
 
 export function initAudioRecorder(recorder) {
+    let transcript = '';
+    const recognition = new SpeechRecognition();
+
+    recognition.addEventListener('result', (e) => {
+        transcript = e.results[0][0].transcript;
+    });
+
+    recorder.addEventListener('start', () => {
+        recognition.start();
+    })
     recorder.addEventListener('stop', () => {
         const blob = new Blob(chunks, { type: recorder.mimeType });
-        createAudioElement(originalAudioBlob, blob);
+        createAudioMessage(originalAudioBlob, blob, transcript);
     });
 
     recorder.addEventListener('pause', () => {
@@ -35,14 +45,6 @@ export function handleShortCut(event, mediaRecorder, audioElement) {
     const startKeyPressed = event.altKey && event.shiftKey && event.key.toLowerCase() === 'd';
     const stopKeyPressed = event.key === ' ' || event.key === 'Enter';
 
-    if (escapeKeyPressed) {
-        mediaRecorder.pause();
-        console.log('recording deleted');
-        const recordQuitAudio = new Audio('public/audio/quit-recording.mp3');
-        recordQuitAudio.play();
-        return;
-    }
-
     if (mediaRecorder.state === 'inactive' && startKeyPressed) {
         event.preventDefault();
         audioElement.pause();
@@ -55,8 +57,15 @@ export function handleShortCut(event, mediaRecorder, audioElement) {
         const recordEndAudio = new Audio('public/audio/end-recording.mp3');
         recordEndAudio.play();
         setTimeout(() => audioElement.play(), 1000);
+    } else if (mediaRecorder.state === 'recording' && escapeKeyPressed) {
+        mediaRecorder.pause();
+        console.log('recording deleted');
+        const recordQuitAudio = new Audio('public/audio/quit-recording.mp3');
+        recordQuitAudio.play();
+        setTimeout(() => audioElement.play(), 2500);
     }
 }
+
 
 async function createLayeredMonoAudio(originalSrc, recordedBlob, contextDuration = 5) {
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -78,10 +87,8 @@ async function createLayeredMonoAudio(originalSrc, recordedBlob, contextDuration
 
     const contextSnippet = originalBuffer.getChannelData(0).slice(contextStartFrame, pauseFrame);
     
-    // Plak de context aan het begin (index 0)
     finalData.set(contextSnippet, 0);
 
-    // 4. Kopieer de reactie direct na de context
     const reactionData = recordedBuffer.getChannelData(0);
     finalData.set(reactionData, contextFrames);
 
@@ -89,8 +96,8 @@ async function createLayeredMonoAudio(originalSrc, recordedBlob, contextDuration
 }
 
 // Voeg beide blobs toe als parameters
-async function createAudioElement(originalBlob, recordedBlob) {
-    const body = document.querySelector('body');
+async function createAudioMessage(originalBlob, recordedBlob, transcript) {
+    const messageContainer = document.querySelector('.messages');
 
     // Maak de gelaagde audio buffer
     const layeredBuffer = await createLayeredMonoAudio(originalBlob, recordedBlob);
@@ -112,8 +119,17 @@ async function createAudioElement(originalBlob, recordedBlob) {
                             <img class="icon-play" src="./public/images/play-button.png">
                         </div>
                         <div class="audio-visual" style="--animation-duration: ${audioDuration}s"></div>`;
-    playButton.addEventListener('click', pressPlayButton)
+    playButton.addEventListener('click', pressPlayButton);
 
+    const transcribeButton = document.createElement('button');
+    transcribeButton.textContent = 'Transcribeer';
+    transcribeButton.classList.add('transcribe');
+    transcribeButton.addEventListener('click', pressTranscribeButton);
+
+    const transcriptText = document.createElement('p');
+    transcriptText.classList.add("empty");
+    transcriptText.setAttribute('data-text-content', transcript)
+  
     const audioContainer = document.createElement("div");
     audioContainer.classList.add('audio-container');
 
@@ -122,8 +138,10 @@ async function createAudioElement(originalBlob, recordedBlob) {
 
     audioContainer.appendChild(playButton);
     audioContainer.appendChild(audio);
+    audioContainer.appendChild(transcribeButton);
+    audioContainer.appendChild(transcriptText);
     message.appendChild(audioContainer);
-    body.appendChild(message);
+    messageContainer.appendChild(message);
 }
 
 

@@ -5,7 +5,9 @@ html {
     --secundary-background-color: #1E2228;
 
     --chat-bubble-color: #3D6BF2;
+    --chat-bubble-secondary: #81a0fc;
     --recieved-chat-bubble-color: #2B2F33;
+    --recieved-chat-bubble-secondary: grey;
 
     --focus-color: #00ff00;
 }
@@ -13,6 +15,7 @@ html {
 * {
     margin: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -26,31 +29,81 @@ body {
 }
 
 h1 {
-    font-size: 4em;
-    font-family: Arial, Helvetica, sans-serif
+    font-size: 4em; 
 }
 
-p {
-    font-family: Arial, Helvetica, sans-serif;
+h2 {
+    font-size: 3em;
+}
+
+p, label {
     font-size: 1.75rem;
 }
 
-button {
+label {
+    font-weight: 550;
     display: flex;
+    flex-direction: column;
     gap: .5rem;
-    background-color: var(--chat-bubble-color);
-    padding: 2rem;
-    border: .5rem solid var(--main-text-color);
-    cursor: pointer;
-    color: var(--main-text-color);
 
+    padding: 2rem;
+    
+    border: 15px solid white;
+}
+
+input {
+    font-size: 2rem;
     &:focus {
         outline: 1rem solid var(--focus-color);
     }
 }
 
+button {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--chat-bubble-color);
+    padding: .5rem;
+    border: .5rem solid var(--main-text-color);
+    cursor: pointer;
+    color: var(--main-text-color);
+    font-size: 2rem;
+
+    &:focus {
+        outline: 1rem solid var(--focus-color);
+    }
+
+
+}
+
 img {
-    height: 4rem;
+    height: 3rem;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 3rem;
+
+    @media (max-width: 1024px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 15px solid white;
+}
+
+.audio-container {
+    padding: 1rem;
+    border: 1rem solid white;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
 }
 
 .audio-message {
@@ -58,6 +111,7 @@ img {
      &.opposite {
         align-self: flex-start;
         --chat-bubble-color: var(--recieved-chat-bubble-color);
+        --chat-bubble-secondary: var(--recieved-chat-bubble-secondary);
     }
 }
 
@@ -84,10 +138,10 @@ img {
 .audio-visual {
     --animation-duration: 0s;
 
-    width: 8rem;
-    height: 4rem;
+    width: 6rem;
+    height: 3rem;
     background: linear-gradient(to left,
-    grey 50%, white 0 100%);
+    var(--chat-bubble-secondary) 50%, white 0 100%);
     background-size: 200%;
     mask-image: url('./public/images/voice-message.png');
     mask-repeat: repeat-x;

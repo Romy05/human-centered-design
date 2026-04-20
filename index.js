@@ -1,5 +1,4 @@
 import { initAudioRecorder, handleShortCut } from "./helpers/audioRecorder.js";
-import { respondToAudio } from "./helpers/audioCutter.js";
 
 let recorder;
 
@@ -23,15 +22,27 @@ audioContainers.forEach(container => {
     visualElement.setAttribute('style', `--animation-duration: ${audioElement.duration}s`);
 });
 
-const respondButtons = document.querySelectorAll('.respond-button');
+const transcriptButtons = document.querySelectorAll('.transcribe');
 
-respondButtons.forEach(button => button.addEventListener('click', respondToAudio));
+transcriptButtons.forEach(button => button.addEventListener('click', pressTranscribeButton));
 
 const playAudioButtons = document.querySelectorAll('.play-button');
 
 let activeShortcutListener = null;
 
 playAudioButtons.forEach(button => button.addEventListener('click', pressPlayButton));
+
+export function pressTranscribeButton(e) {
+    const transcription = e.target.nextElementSibling;
+    transcription.classList.toggle('empty');
+
+    if (transcription.classList.contains('empty')){
+        transcription.setAttribute('data-text-content', transcription.textContent);
+        transcription.textContent = '';
+    } else {
+        transcription.textContent = transcription.getAttribute('data-text-content');
+    }
+}
 
 export function pressPlayButton(e) {
     const button = e.currentTarget;

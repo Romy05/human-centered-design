@@ -108,3 +108,14 @@ Vormgeving is goed, de knop is heel erg groot dat is goed en groot.
 Lettertype hetzelfde en let op de g, alle lijntjes dezelfde dikte. 
 
 Het lukte niet om de spraakopname op te slaan, het was misschien niet duidelijk dat alt+shift+d er voor zorgde dat hij stopte met opnemen. Voeg een keylistener toe die luistert naar spatie en/of enter.
+
+## Checkout Maandag 20-4-2026
+
+
+## Test Dinsdag 21-4-2026
+
+alt shift D werkt niet met NVDA, deze dus aanpassen zodat dit wel gaat werken
+
+Verder vond Berend de UI goed en de werking wel fijn.
+Testen met NVDA dus.
+Probeer control shift S

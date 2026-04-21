@@ -43,7 +43,7 @@ export function handleShortCut(event, mediaRecorder, audioElement) {
     console.log(event);
     const escapeKeyPressed = event.key === 'Escape';
     const startKeyPressed = event.altKey && event.shiftKey && event.key.toLowerCase() === 'd';
-    const stopKeyPressed = event.key === ' ' || event.key === 'Enter';
+    const stopKeyPressed = event.key === ' ' || event.key === 'Enter' || startKeyPressed;
 
     if (mediaRecorder.state === 'inactive' && startKeyPressed) {
         event.preventDefault();

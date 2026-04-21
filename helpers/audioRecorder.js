@@ -128,6 +128,7 @@ async function createAudioMessage(originalBlob, recordedBlob, transcript) {
 
     const transcriptText = document.createElement('p');
     transcriptText.classList.add("empty");
+    transcriptText.classList.add('transcript');
     transcriptText.setAttribute('data-text-content', transcript)
   
     const audioContainer = document.createElement("div");

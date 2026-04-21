@@ -24,12 +24,12 @@
                       <div class="audio-visual"></div>
                     </button>
                     
-                    <audio src="./public/audio/p_9294290_45.mp3"></audio>
+                    <audio preload="metadata" src="./public/audio/p_9294290_45.mp3"></audio>
 
                     <button class="transcribe">
                       Transcribeer
                     </button>
-                    <p class="empty" data-text-content="Hey Berend! Ik hoorde vandaag dat je naar de hogeschool van Amsterdam toe ging om websites van studenten te testen. Hoe lang duurt dat? En hoe laat denk je dat je daar klaar bent?" aria-live="polite"></p>
+                    <p class="empty transcript" data-text-content="Hey Berend! Ik hoorde vandaag dat je naar de hogeschool van Amsterdam toe ging om websites van studenten te testen. Hoe lang duurt dat? En hoe laat denk je dat je daar klaar bent?" aria-live="polite"></p>
                   </div> 
               </div>
             </div>
@@ -38,8 +38,11 @@
             <h2>Zoeken</h2>
             <label>
               Zoek spraakberichten
-              <input />
+              <input id="search-input" />
             </label>
+            <div id="search-container">
+
+            </div>
           </div>
         </div>
         

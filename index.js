@@ -18,7 +18,7 @@ const audioContainers = document.querySelectorAll('.audio-container');
 audioContainers.forEach(container => {
     const audioElement = container.querySelector('audio');
     const visualElement = container.querySelector('.audio-visual');
-
+    console.log(audioElement.duration);
     visualElement.setAttribute('style', `--animation-duration: ${audioElement.duration}s`);
 });
 
@@ -31,6 +31,58 @@ const playAudioButtons = document.querySelectorAll('.play-button');
 let activeShortcutListener = null;
 
 playAudioButtons.forEach(button => button.addEventListener('click', pressPlayButton));
+
+const searchInput = document.getElementById('search-input');
+searchInput.addEventListener('input', handleSearch);
+
+function handleSearch(e) { 
+    const searchContainer = document.getElementById('search-container');
+    searchContainer.innerHTML = '';
+
+    if (!e.target.value) {
+        return;
+    }
+
+    const allMessages = Array.from(document.querySelectorAll('.audio-message'));
+    const messageObjects = allMessages.map(message => {
+        const transcript = message.querySelector('.transcript').getAttribute('data-text-content');
+        const copy = message.cloneNode(true);
+
+        const normalizedTranscript = normalizeString(transcript);
+        const normalizedInput = normalizeString(e.target.value);
+
+        if (normalizedTranscript.includes(normalizedInput)) {
+            const copyTranscript = copy.querySelector('.transcript');
+            const copyTranscribeButton = copy.querySelector('.transcribe');
+            const copyPlayButton = copy.querySelector('.play-button');
+
+            copyPlayButton.addEventListener('click', pressPlayButton);
+
+            copyTranscribeButton.remove();
+            copyTranscript.textContent = copyTranscript.getAttribute('data-text-content');
+            copyTranscript.classList.remove('empty');
+
+            return {
+                message: copy,
+                transcript
+            }
+        }
+    });
+
+    messageObjects.forEach((messageObject) => {
+        if (messageObject === undefined) {
+            return;
+        }
+        searchContainer.appendChild(messageObject.message);
+    });
+}
+
+function normalizeString(string) {
+    // bron https://www.geeksforgeeks.org/javascript/how-to-remove-punctuation-from-text-using-javascript/
+    let normalizedString = string.replace(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g, '');
+    normalizedString = normalizedString.toLowerCase()
+    return normalizedString;
+}
 
 export function pressTranscribeButton(e) {
     const transcription = e.target.nextElementSibling;

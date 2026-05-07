@@ -7,77 +7,46 @@
         <link rel="stylesheet" href="index.css" />
     </head>
     <body>
+      
       <!--Is de website goedgekeurd? -->
-        <h1>Antwoorden op fragmenten van spraakberichten</h1>
-        <p>Druk <strong>tijdens het luisteren</strong> op <strong>Alt+Shift+D</strong> om een reactie op te nemen. Druk nogmaals op <strong>Alt+Shift+D</strong> om te stoppen en te versturen. Wil je de opname annuleren? Druk dan op <strong>Escape</strong>.</p>
-        <p aria-live="polite" id="instructions"></p>
-        <div class="content">
-          <div>
-            <h2>Berichten</h2>
-            <div class="messages">
-              <div class="audio-message opposite">
-                  <div class="audio-container">
-                    <button aria-label="speel spraakbericht af" class="play-button">
-                      <div class="icon">
-                        <img class="icon-pause" src="./public/images/pause-button.png">
-                        <img class="icon-play" src="./public/images/play-button.png">
-                      </div>
-                      <div class="audio-visual"></div>
-                    </button>
-                    
-                    <audio preload="metadata" src="./public/audio/p_9294290_45.mp3"></audio>
 
-                    <button class="transcribe">
-                      Transcribeer
-                    </button>
-                    <p class="empty transcript" data-text-content="Hey Berend! Ik hoorde vandaag dat je naar de hogeschool van Amsterdam toe ging om websites van studenten te testen. Hoe lang duurt dat? En hoe laat denk je dat je daar klaar bent?" aria-live="polite"></p>
-                  </div> 
-              </div>
-            </div>
-          </div>
-          <div>
-            <h2>Zoeken</h2>
-            <label>
-              Zoek spraakberichten
-              <input id="search-input" />
-            </label>
-            <div id="search-container">
+      <h1>Antwoorden op fragmenten van spraakberichten</h1>
+      <p>Druk <strong>tijdens het luisteren</strong> op <strong>Alt+Shift+D</strong> om een reactie op te nemen. Druk nogmaals op <strong>Alt+Shift+D</strong> om te stoppen en te versturen. Wil je de opname annuleren? Druk dan op <strong>Escape</strong>.</p>
+      <p aria-live="polite" id="instructions"></p>
+      <div class="content">
+        <div>
+          <h2>Berichten</h2>
+          <div class="messages">
+            <div class="audio-message opposite">
+                <div class="audio-container">
+                  <button aria-label="speel spraakbericht af" class="play-button">
+                    <div class="icon">
+                      <img class="icon-pause" src="./public/images/pause-button.png">
+                      <img class="icon-play" src="./public/images/play-button.png">
+                    </div>
+                    <div class="audio-visual"></div>
+                  </button>
+                  
+                  <audio preload="metadata" src="./public/audio/p_9294290_45.mp3"></audio>
 
+                  <button class="transcribe">
+                    Transcribeer
+                  </button>
+                  <p class="empty transcript" data-text-content="Hey Berend! Ik hoorde vandaag dat je naar de hogeschool van Amsterdam toe ging om websites van studenten te testen. Hoe lang duurt dat? En hoe laat denk je dat je daar klaar bent?" aria-live="polite"></p>
+                </div> 
             </div>
           </div>
         </div>
-        
-        <!-- <br><br><br><br><br>
-        <button id="record-button">Record/stop</button> -->
+        <div>
+          <h2>Zoeken</h2>
+          <label>
+            Zoek spraakberichten
+            <input id="search-input" />
+          </label>
+          <div id="search-container">
 
-        <!-- <div class="container">
-  <h1>Audio Trimmer</h1>
-  
-  <section>
-    <h3>1. Originele Audio</h3>
-    <audio id="originalAudio" controls crossorigin="anonymous" src="./public/audio/p_9294290_45.mp3"></audio>
-    <p><small>Let op: Werkt alleen als de server van het bestand CORS toestaat.</small></p>
-  </section>
-
-  <section class="controls">
-    <h3>2. Instellingen</h3>
-    <div class="input-group">
-      <label>Start (sec): 
-        <input type="number" id="start" value="1" step="0.1">
-      </label>
-      <label>Eind (sec): 
-        <input type="number" id="end" value="5" step="0.1">
-      </label>
-    </div>
-    <button id="trimBtn">Knip Audio & Maak Nieuw Element</button>
-  </section>
-
-  <section>
-    <h3>3. Resultaat</h3>
-    <div id="resultContainer">
-      <p class="placeholder">Nog geen fragment gemaakt...</p>
-    </div>
-  </section>
-</div> -->
-    </body>
+          </div>
+        </div>
+      </div>   
+   </body>
 </html>

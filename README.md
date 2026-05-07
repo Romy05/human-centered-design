@@ -1,7 +1,34 @@
 # human-centered-design
-
 Deze website is gemaakt als eindopdracht voor het vak: Human Centered Design (HCD).
 Mijn opdracht is om een website te maken voor Berend, hij werkt bij een startup die zich bezighoudt met indoor navigatie en hij is ervaringsprofessional bij Stichting Accessibility. Berend is ook blind en gebruikt een screenreader om het web te navigeren.
+
+Ik heb ervoor gekozen om een website te maken waar je spraakopnames mee op kunt nemen. Dit heb ik gekozen omdat Berend vaak spraakopnames gebruikt om te communiceren. Het probleem waar Berend tegenaanloopt met spraakopnames is dat het lastig is om gelijk te reageren op iets wat iemand zegt in de spraakopname. Je moet namelijk eerst wachten totdat je de hele spraakopname hebt afgeluisterd en zelfs dan is het voor de ontvanger soms onduidelijk op welk stuk je reageert.
+
+Omdat dit iets is waar ik mij heel erg in kan herkennen lijkt het me een leuke uitdaging om hier een oplossing voor te verzinnen.
+
+## Het product
+
+Om het op te lossen ben ik begonnen met een 'audio-cutter'.
+Waarom zou er verschil moeten zijn tussen het knippen van audio en het knippen van video?
+
+<img src="./public/images/Schermafbeelding 2026-03-30 153732.png">
+
+Het idee hierbij was dat je uit een spraakopname zelf een fragment kon knippen, net zoals bij het knippen van een video.
+
+In de eerste week heeft Berend dit getest, maar hieruit bleek dat de handelingen die je moest doen te veel waren. Hierdoor was het niet geschikt om in te springen in een spraakbericht.
+
+Berend zei wel dat hij dit een super tool zou vinden voor het knippen van andere audio bestanden zoals liedjes. Dus ik ben blij dat het product wel voor bijvoorbeeld andere dingen gebruikt kan worden. 
+
+Omdat dit niet de opdracht was ben ik het anders gaan aanpakken; wat als je context krijgt door standaard 5 seconden van het stukje waar je op reageert te horen krijgt? 
+Dit werkte wel erg fijn, omdat er een heel proces eigenlijk werd geautomatiseerd. Het enige jammere hiermee is wel dat je niet kunt bepalen hoeveel seconden je terug wilt spoelen.
+
+Ik vond dit wel de beste oplossing die ik heb gevonden hiervoor, omdat tijdens het reageren op de spraakopname voelt het echt alsof je iemand onderbreekt en hier dan ook op reageert.
+
+Verder kwam er ook uit meerdere iteraties dat Berend het fijn vond om spraakopnames op te kunnen zoeken. Daarom heb ik ook een transcribeer knop bij iedere spraakopname gemaakt. Deze transcribeert de spraakopnames, en hierdoor kun je ze dus ook gemakkelijk terug zoeken.
+
+# Voortgang
+
+Hier onder staat de voortgang van het maken van dit product.
 
 ## checkout maandag 30-3-2026 
 
@@ -110,12 +137,15 @@ Lettertype hetzelfde en let op de g, alle lijntjes dezelfde dikte.
 Het lukte niet om de spraakopname op te slaan, het was misschien niet duidelijk dat alt+shift+d er voor zorgde dat hij stopte met opnemen. Voeg een keylistener toe die luistert naar spatie en/of enter.
 
 ## Checkout Maandag 20-4-2026
-
+Ik ben begonnen met het toevoegen van een functionaliteit waarbij berend spraakopnames kan opzoeken door middel van tekst. Verder heb ik de UI aangepast zodat het meer past bij wat Berend fijn vindt. Ik heb bijvoorbeeld een donkere website gemaakt, omdat hij dark mode gebruikt en heb ik elke sectie dikke borders gegeven.
 
 ## Test Dinsdag 21-4-2026
-
 alt shift D werkt niet met NVDA, deze dus aanpassen zodat dit wel gaat werken
 
 Verder vond Berend de UI goed en de werking wel fijn.
 Testen met NVDA dus.
 Probeer control shift S
+
+## Week checkout 24-4-2026
+Het werkt goed, maar probeer meer nonsense toe te voegen aan het ontwerp.
+Door nonsense toe te voegen kom je misschien achter onverwachte dingen die ontzettend kunnen helpen of het product leuker/fijner maken.
